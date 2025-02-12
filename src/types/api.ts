@@ -1,73 +1,87 @@
 // PAGE
 
 export interface PageData {
-    Name: string;
-    Heading: (HeadingSummaryAnimated | HeadingSummaryBasic);
-    Section: (BasicSection | Carrousel | DisplayBtn | DisplayForm | DisplayFramedImage | DisplayGallery | FramedBetweenImage | HeadingSummaryAnimated | HeadingSummaryBasic | ImageBetweenFramed | SectionLocation | SectionWithFramedText | SideSummary | ImageDivider | LineDivider);
+    Nom: string;
     Slug: string;
+    Sections: Section[];
 }
 
 // SECTION 
 
+export type Section = BasicSection | Carrousel | DisplayBtn | DisplayForm | DisplayFramedImage | DisplayGallery | FramedBetweenImage | HeadingSummaryAnimated | HeadingSummaryBasic | ImageBetweenFramed | SectionLocation | SectionWithFramedText | SideSummary | ImageDivider | LineDivider;
+
 export interface BasicSection {
+    __typename: string;
     Title: string;
     Content: TitleSummaryBasic[];
 }
 
 export interface Carrousel {
+    __typename: string;
     Element: MediaImage[];
 }
 
 export interface DisplayBtn {
+    __typename: string;
     Title: string;
     Button: TextBtn[];
 }
 
 export interface DisplayForm {
+    __typename: string;
     Title: string;
     Text: Paragraph[];
     Form: Form;
 }
 
 export interface DisplayFramedImage {
+    __typename: string;
     Title: string;
-    Element: FramedImg;
-    Type: string;
+    Element: FramedImg[];
+    FramedType: FramedType;
 }
 
 export interface DisplayGallery {
-    Element: MediaImage[];
+    __typename: string;
+    Element: GalleryElt[];
 }
 
 export interface FramedBetweenImage {
+    __typename: string;
     LeftImage: MediaImage;
-    FramedText: FramedText;
+    UniqueFramedText: FramedText;
     RightImage: MediaImage;
+    FramedType: FramedType;
 }
 
 export interface HeadingSummaryAnimated {
+    __typename: string;
     Title: string;
     Summary: TitleSummaryAnimated[];
     Button: TextBtn[];
     Image: MediaImage;
-    Type: string;
+    AnimatedType: string;
 }
 
 export interface HeadingSummaryBasic {
+    __typename: string;
     Title: string;
     Summary: TitleSummaryBasic[];
     Button: TextBtn[];
     Image: MediaImage;
-    Type: string;
+    BasicType: string;
 }
 
 export interface ImageBetweenFramed {
+    __typename: string;
     LeftFramed: FramedText;
     Image: MediaImage;
     RightFramed: FramedText;
+    FramedType: FramedType;
 }
 
 export interface SectionLocation {
+    __typename: string;
     Title: string;
     Plan: MediaImage;
     AdressTitle: string;
@@ -75,15 +89,18 @@ export interface SectionLocation {
     RedirGPS: ImageBtn[];
     ScheduleTitle: string;
     Schedule: Paragraph[];
-    OfficeImg: MediaImage[];
+    LocationImg: MediaImage[];
 }
 
 export interface SectionWithFramedText {
+    __typename: string;
     Title: string;
-    FramedText: TitleSummaryBasic[];
+    MultipleFramedText: FramedText[];
+    FramedType: FramedType;
 }
 
 export interface SideSummary {
+    __typename: string;
     Title: string;
     Summary: TitleSummaryBasic[];
     SideImage: MediaImage;
@@ -141,7 +158,7 @@ export interface TextBtn {
 }
 
 export interface TitleSummaryAnimated {
-    Title: TypeAnimation;
+    AnimatedTitle: TypeAnimation;
     Summary: Paragraph[];
 }
 
@@ -150,13 +167,19 @@ export interface TitleSummaryBasic {
     Summary: Paragraph[];
 }
 
+export interface FramedType {
+    Type: string;
+}
+
 // DIVIDER 
 
 export interface ImageDivider {
+    __typename: string;
     Image: MediaImage;
 }
 
 export interface LineDivider {
+    __typename: string;
     LineColor: string;
 }
 
