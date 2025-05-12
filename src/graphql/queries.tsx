@@ -22,6 +22,7 @@ export const GET_PAGE_DATA = gql`
                     Button {
                         Text
                         RedirUrl
+                        Type
                     }
                     Image {
                         ImgTitle
@@ -47,6 +48,7 @@ export const GET_PAGE_DATA = gql`
                     Button {
                         Text
                         RedirUrl
+                        Type
                     }
                     Image {
                         ImgTitle
@@ -90,6 +92,7 @@ export const GET_PAGE_DATA = gql`
                     Button {
                         Text
                         RedirUrl
+                        Type
                     }
                 }
                 ... on ComponentSectionDisplayForm {
@@ -121,6 +124,7 @@ export const GET_PAGE_DATA = gql`
                         FormButton {
                             Text
                             RedirUrl
+                            Type
                         }
                     }
                 }
@@ -241,8 +245,8 @@ export const GET_PAGE_DATA = gql`
                         }
                         ImgAlt
                     }
-                    AdressTitle
-                    Adress
+                    AddressTitle
+                    Address
                     RedirGPS {
                         Image {
                             ImgTitle
@@ -330,18 +334,27 @@ export const GET_PAGE_DATA = gql`
 `;
 
 export const GET_NAVIGATION = gql`
-  query getNavigation($navigationIdOrSlug: String!) {
-    renderNavigation(navigationIdOrSlug: $navigationIdOrSlug) {
-      title
-      uiRouterKey
-      related {
-        __typename
-        ... on Page {
-          documentId
+    query getNavigation($navigationIdOrSlug: String!) {
+        renderNavigation(navigationIdOrSlug: $navigationIdOrSlug) {
+            title
+            path
+            menuAttached
+            related {
+                __typename
+                ... on Page {
+                documentId
+                }
+            }
+            parent {
+                title
+                path
+                parent {
+                    title
+                    path
+                }
+            }
         }
-      }
     }
-  }
 `;
 
 export const GET_CURRENT_NAV_PAGE = gql`
@@ -357,13 +370,6 @@ query getNavigation($navigationIdOrSlug: String!, $uiRouterKey: String) {
 }
 
 `;
-
-
-export const TEST_QUERY = gql`query pages {
-    contact {
-        Name
-    }
-}`;
 
 export const GET_PAGE_DATA_SLUG = gql`
     query GetPageDate($slug: String!) {
@@ -607,8 +613,8 @@ export const GET_PAGE_DATA_SLUG = gql`
                         }
                         ImgAlt
                     }
-                    AdressTitle
-                    Adress
+                    AddressTitle
+                    Address
                     RedirGPS {
                         Image {
                             ImgTitle
@@ -693,4 +699,232 @@ export const GET_PAGE_DATA_SLUG = gql`
             }
         }
     }
+`;
+
+export const GET_COLOR_DATA = gql`
+query getColor {
+    couleur {
+        FondPrincipal {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        ComplementairePrincipal {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        FondPrincipalOpaque {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        TextePrincipal {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        TextePrincipalOpaque {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        FondSecondaire {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        ComplementaireSecondaire {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        FondSecondaireOpaque {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        TexteSecondaire {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        TexteSecondaireOpaque {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        Alternative {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        GradientPrincipal {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+        GradientSecondaire {
+            ... on ComponentCouleurLinearGradient {
+                GradientColor : GradientCouleur {
+                    Hexa : Couleur
+                    Percent : Pourcent
+                }
+                DegreAngle
+                Type
+            }
+            ... on ComponentCouleurCouleur {
+                Hexa : CouleurBasic
+            }
+            ... on ComponentCouleurCouleurPourcent {
+                Hexa : Couleur
+                Percent : Pourcent
+            }
+        }
+    }
+}
 `;

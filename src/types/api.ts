@@ -84,8 +84,8 @@ export interface SectionLocation {
     __typename: string;
     Title: string;
     Plan: MediaImage;
-    AdressTitle: string;
-    Adress: string;
+    AddressTitle: string;
+    Address: string;
     RedirGPS: ImageBtn[];
     ScheduleTitle: string;
     Schedule: Paragraph[];
@@ -155,6 +155,7 @@ export interface Placeholder {
 export interface TextBtn {
     Text: string;
     RedirUrl: string;
+    Type: string;
 }
 
 export interface TitleSummaryAnimated {
@@ -198,6 +199,30 @@ export interface MediaImage {
     ImgTitle: string;
     Image: FormatImage;
     ImgAlt: string;
+}
+
+// COULEUR
+
+export interface Color {
+    __typename: string;
+    Hexa: string;
+}
+
+export interface ColorPercent {
+    __typename: string;
+    Hexa: string;
+    Percent: number;
+}
+
+export interface Gradient {
+    __typename: string;
+    GradientColor: ColorPercent[];
+    DegreAngle: number;
+    Type: string;
+}
+
+export interface ColorData {
+    [key: string]: Array<Color | ColorPercent | Gradient>;
 }
 
 // COMMON FORMAT
