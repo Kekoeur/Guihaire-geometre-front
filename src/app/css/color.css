@@ -1,0 +1,24 @@
+:root {
+      --main-background: #ededed;
+      --complementary-main: red;
+      --op-main-bg: #9c9c9c77;
+      --main-foreground: #171717;
+      --op-main-fg: #171717b0;
+      --secondary-background: #312e81;
+      --complementary-secondary: black;
+      --op-secondary-bg: #312e81b0;
+      --secondary-foreground: #ffffff;
+      --op-secondary-fg: #ffffffb0;
+      --alternative-color: #EDC951;
+      --gradient-secondary: linear-gradient(45deg, var(--complementary-secondary), 25%, var(--secondary-background));
+      --gradient-main: linear-gradient(45deg, var(--complementary-main), 25%, var(--main-background));
+  }
+  /*
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --main-background: #0a0a0a;
+      --main-foreground: #ededed;
+      --secondary-background: yellow;
+    }
+  }
+  */
